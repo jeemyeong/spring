@@ -41,9 +41,6 @@
 
         <!-- testWhileIdle 샘플 설정 5분마다 5개의 connection 꺼내 validation query를 날려 확인 -->
         <property name="testWhileIdle" value="true"/>
-         <!--  cubrid에서는 JDBC 드라이버에서 유효성 검사를 해주므로 false로 설정한다.  
-         http://devcafe.nhncorp.com/Lucy/forum/1023431 참조
-         -->
         <property name="timeBetweenEvictionRunsMillis" value="600000"/>
         <property name="numTestsPerEvictionRun" value="5"/>
         <property name="minEvictableIdleTimeMillis" value="-1"/>
