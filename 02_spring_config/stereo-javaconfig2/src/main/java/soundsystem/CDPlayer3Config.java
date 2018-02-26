@@ -32,12 +32,12 @@ public class CDPlayer3Config {
 
 
   @Bean("cdPlayer3")
-  public CDPlayer1 cdPlayer1(@Qualifier("cd1") CompactDisc cd) {
+  public CDPlayer1 cdPlayer3(@Qualifier("cd1") CompactDisc cd) {
     return new CDPlayer1(cd);
   }
 
   @Bean("cdPlayer4")
-  public CDPlayer1 cdPlayer2(@Qualifier("cd2") CompactDisc cd) {
+  public CDPlayer1 cdPlayer4(@Qualifier("cd2") CompactDisc cd) {
     return new CDPlayer1(cd);
   }
 }

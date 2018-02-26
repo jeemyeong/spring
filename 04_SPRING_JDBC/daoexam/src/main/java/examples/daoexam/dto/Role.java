@@ -3,6 +3,7 @@ package examples.daoexam.dto;
 public class Role {
 	private int roleId;
 	private String description;
+
 	public int getRoleId() {
 		return roleId;
 	}

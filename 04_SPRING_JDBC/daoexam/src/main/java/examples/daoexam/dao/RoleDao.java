@@ -26,6 +26,9 @@ public class RoleDao {
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
         this.insertAction = new SimpleJdbcInsert(dataSource)
                 .withTableName("role");
+//		this.insertAction = new SimpleJdbcInsert(dataSource)
+//				.withTableName("role")
+//				.usingGeneratedKeyColumns("role_id");
     }
     
     public List<Role> selectAll() {
@@ -35,6 +38,10 @@ public class RoleDao {
 
 	public int insert(Role role) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
+//		return insertAction.executeAndReturnKey(params);
+
+		// role이 가지고 있는 roleId
+		// insert into role(role_id, de....) values (?, ?)
 		return insertAction.execute(params);
 	}
 	

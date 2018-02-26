@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <jpa:repositories base-package="urstory.repository" />
+    <context:component-scan base-package="urstory" use-default-filters="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <jpa:repositories base-package="urstory.repository" repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory" />
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+
+    </bean>
+
+
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="MYSQL" />
+            </bean>
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>urstory.entity</value>
+            </list>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.show_sql">#{jpaProperties['hibernate.show_sql']}</prop>
+                <prop key="hibernate.format_sql">#{jpaProperties['hibernate.format_sql']}</prop>
+                <prop key="hibernate.use_sql_comments">#{jpaProperties['hibernate.use_sql_comments']}</prop>
+                <prop key="hibernate.globally_quoted_identifiers">true</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                <!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
+                <!-- create, update, create-drop, validate -->
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+    <util:properties id="jpaProperties" location="classpath:properties/jpa.properties" />
+
+</beans>
