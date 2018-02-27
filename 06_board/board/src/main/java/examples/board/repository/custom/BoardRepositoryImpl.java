@@ -1,11 +1,11 @@
-package urstory.repository.custom;
+package examples.board.repository.custom;
 
-import com.mysema.query.jpa.JPQLQuery;
+
+import com.querydsl.jpa.JPQLQuery;
+import examples.board.entity.Board;
+import examples.board.entity.QBoard;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
-import urstory.entity.Board;
-import urstory.entity.QBoard;
 
-import java.util.Date;
 import java.util.List;
 
 // BoardRepositoryCustom 를 구현한다.
@@ -23,7 +23,7 @@ public class BoardRepositoryImpl
         QBoard qboard = QBoard.board;
         JPQLQuery query = from(qboard);
         query.where(qboard.title.like("%" + title + "%"));
-        return query.list(qboard);
+        return query.fetch();
     }
 
     @Override
@@ -40,6 +40,6 @@ public class BoardRepositoryImpl
         return from(qboard)
                 .where(qboard.content
                 .like("%" + content + "%"))
-                .list(qboard);
+                .fetch();
     }
 }

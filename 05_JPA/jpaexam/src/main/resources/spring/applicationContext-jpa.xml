@@ -16,14 +16,14 @@
     </context:component-scan>
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <jpa:repositories base-package="urstory.repository" repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory" />
+    <jpa:repositories base-package="urstory.repository"
+                      repository-impl-postfix="Impl"
+                      entity-manager-factory-ref="entityManagerFactory" />
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
 
     </bean>
-
-
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />

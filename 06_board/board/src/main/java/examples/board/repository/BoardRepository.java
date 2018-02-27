@@ -1,10 +1,10 @@
-package urstory.repository;
+package examples.board.repository;
 
+import examples.board.repository.custom.BoardRepositoryCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
-import urstory.entity.Board;
-import urstory.repository.custom.BoardRepositoryCustom;
+import examples.board.entity.Board;
 
 import java.util.List;
 

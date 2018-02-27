@@ -1,7 +1,7 @@
-package urstory.repository.custom;
+package examples.board.repository.custom;
 
+import examples.board.entity.Board;
 import org.springframework.data.repository.NoRepositoryBean;
-import urstory.entity.Board;
 
 import java.util.List;
 

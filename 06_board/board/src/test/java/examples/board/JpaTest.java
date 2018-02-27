@@ -1,26 +1,23 @@
-package urstory;
+package examples.board;
 
-import static org.junit.Assert.*;
-
-import jdk.nashorn.internal.runtime.ECMAException;
-import org.junit.Before;
+import examples.board.config.RootApplicationContextConfig;
+import examples.board.entity.Board;
+import examples.board.repository.BoardRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import urstory.entity.Board;
-import urstory.repository.BoardRepository;
 
-import javax.annotation.Resource;
-import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextHierarchy({
-        @ContextConfiguration("classpath:spring/applicationContext.xml")
+        @ContextConfiguration(classes = RootApplicationContextConfig.class)
 })
 //@Transactional
 public class JpaTest {
@@ -42,10 +39,8 @@ public class JpaTest {
         board.setRegdate(new Date());
         board.setReadCount(0);
 
-        for(int i = 0; i < 3; i++) {
-            Board returnBoard = boardRepository.save(board);
-            System.out.println(returnBoard.getId());
-        }
+        Board returnBoard = boardRepository.save(board);
+        System.out.println(returnBoard.getId());
     }
 
     @Test
