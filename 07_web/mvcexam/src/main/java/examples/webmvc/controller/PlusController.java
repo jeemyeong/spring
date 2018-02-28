@@ -2,12 +2,11 @@ package examples.webmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PlusController {
+//	@RequestMapping(path = "/plusform", method = RequestMethod.GET)
 	@GetMapping(path="/plusform")
 	public String plusform() {
 		return "plusForm";
@@ -22,6 +21,6 @@ public class PlusController {
 		modelMap.addAttribute("value1", value1);
 		modelMap.addAttribute("value2", value2);
 		modelMap.addAttribute("result", result);
-		return "plusResult";
+		return "plusResult"; // plusResult.jsp 포워딩
 	}
 }

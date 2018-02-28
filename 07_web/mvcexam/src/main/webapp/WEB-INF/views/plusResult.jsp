@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-  
+  // EL 표기법
 ${value1} 더하기 ${value2} (은/는) ${result} 입니다.
   
 </body>
