@@ -16,9 +16,9 @@ public class DBConfig {
 
     private String url = "jdbc:mysql://localhost:3306/testdb?useUnicode=true&characterEncoding=utf8";
 
-    private String username = "testuser";
+    private String username = "root";
 
-    private String password = "test123!@#";
+    private String password = "dlwlaud";
 
     @Bean
     public DataSource dataSource() {

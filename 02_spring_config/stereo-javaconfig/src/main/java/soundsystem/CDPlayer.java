@@ -12,5 +12,10 @@ public class CDPlayer implements MediaPlayer {
   public void play() {
     cd.play();
   }
-
+  public void initCdPlayer() {
+    System.out.println("initCdPlayer");
+  }
+  public void destroyCdPlayer() {
+    System.out.println("destroyCdPlayer");
+  }
 }
