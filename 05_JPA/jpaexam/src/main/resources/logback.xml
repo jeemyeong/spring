@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration file for LogBack (slf4J implementation) See here for more
+	details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator />
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="access" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <logger name="trace" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <logger name="lang" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+
+    <!--<logger name="com.nhnent.dooray" level="trace" />-->
+    <!--<logger name="org.hibernate.type" level="debug" />-->
+
+    <!-- <include resource="rolling-file-appender.xml"/> -->
+
+    <!-- print pretty sql -->
+    <logger name="jdbc" level="warn"/>
+    <logger name="jdbc.resultsettable" level="info"/>
+    <logger name="jdbc.sqlonly" level="info"/>
+    <logger name="jdbc.sqltiming" level="info"/>
+
+    <root>
+        <level value="info" />
+        <appender-ref ref="console" />
+        <!--<appender-ref ref="logncrash-http" />-->
+        <!--<appender-ref ref="logncrash-async" />-->
+
+
+    </root>
+
+</configuration>
